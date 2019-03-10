@@ -9,6 +9,8 @@ def map_filter_reduce():
     [x for x in items if x < 2]
     product = reduce((lambda x, y: x * y), items)
     sum(x for x in items)
+
+    [[1, 2], [3, 4], [2, 1]].sort(key=lambda x: x[1])
     return squared, less_than_2, product
 
 
