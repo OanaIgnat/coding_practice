@@ -18,8 +18,8 @@
 ### Binary Search Tree
  - left subtree has smaller keys, right subtree has larger
 
-<img src = "https://github.com/OanaIgnat/coding_practice/blob/master/lifo_fifo.png" width="250")
+<img src = "https://github.com/OanaIgnat/coding_practice/blob/master/lifo_fifo.png" width="250"/>
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/binarysearchtree.png =250x)
+<img src = "https://github.com/OanaIgnat/coding_practice/blob/master/binarysearchtree.png" width="250"/>
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/complexity_datastructures.png =250x)
+<img src = "https://github.com/OanaIgnat/coding_practice/blob/master/complexity_datastructures.png" width="250"/>
