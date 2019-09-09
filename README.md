@@ -9,7 +9,8 @@
 ## Searching:
 - sequential search 
 - binary search (half interval / logarithmic) - on sorted lists
-##Data Structures:
+
+## Data Structures:
 ### Stack - for DFS
  - LIFO: The only way to add one and/or remove is from the top.
 ### Queue - for BFS
@@ -17,8 +18,8 @@
 ### Binary Search Tree
  - left subtree has smaller keys, right subtree has larger
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/lifo_fifo.png)
+![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/lifo_fifo.png =250x)
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/binarysearchtree.png)
+![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/binarysearchtree.png =250x)
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/complexity_datastructures.png)
+![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/complexity_datastructures.png =250x)
