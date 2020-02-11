@@ -23,6 +23,23 @@ def remove_duplicates(exp):
       else:
         new_s += ''
     print(new_s)
+def binary_representation(nb):
+  z = bin(nb)
+  z = str(z).split('b')[1]
+  print('0'*(14-len(z))+z)
+
+
+def find_sqrt(nb):
+  k = 1
+  k_sq = k * k
+  while (k_sq <= nb):
+    if k_sq == nb:
+      print(k)
+      return
+    else:
+      k = k + 1
+      k_sq = k * k
+  print(k-1)
 
 
 
@@ -32,8 +49,10 @@ def main():
   # nearest_multiple_10(6)
   # nearest_multiple_10(1223)
   # nearest_multiple_10(1226)
-  remove_duplicates("aabbcc")
-  remove_duplicates("abc")
+  # remove_duplicates("aabbcc")
+  # remove_duplicates("abc")
+  # binary_representation(5)
+  find_sqrt(90)
 
 if __name__ == "__main__":
   main()
