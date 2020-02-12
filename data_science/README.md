@@ -3,7 +3,7 @@
 - [x] Linear Regression
 - [x] SVM 
 - [x] K Nearest Neighbours
-    - As we decrease the value of K, our predictions become less stable
+    - As we decrease the value of K, our **predictions become less stable**
     - The algorithm gets significantly **slower** as the number of examples and/or features/independent variables increase
     - An application of KNN-search: recommender systems, where we have computing resources to speedily handle the data 
 - [x] Naive Bayes
