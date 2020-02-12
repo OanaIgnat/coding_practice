@@ -44,4 +44,4 @@
 ### Binary Search Tree
  - left subtree has smaller keys, right subtree has larger
 
-<img src = "https://github.com/OanaIgnat/coding_practice/img/blob/master/cheat_sheet_DS.jpeg" width="700"/>
+![alt text](https://github.com/OanaIgnat/coding_practice/img/blob/master/cheat_sheet_DS.jpeg)
