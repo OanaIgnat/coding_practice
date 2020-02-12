@@ -1,4 +1,5 @@
 ## Classification algorithms: 
+### Supervised (labeled data):
 - [x] Logistic Regression
 - [x] Linear Regression
 - [x] SVM 
@@ -24,6 +25,20 @@
     - Very effective for **high dimensionality** problems 
     - Able to deal with **complex relations between variables**, non-exhaustive category sets  
     - Powerful **tuning options to prevent over- and under-fitting**
+
+### Unsupervised (unlabeled data):
+- [x] K-means
+- [x] Hierarchical clustering
+
+### Semi-supervised (in between):
+- Semi-supervised learning uses both tagged and untagged data to fit a model 
+- In some cases, such as Alexa’s, adding the untagged data actually improves the accuracy of the model 
+- In other cases, the untagged data can make the model worse
+
+- **Self-training** uses a model’s own predictions on unlabeled data to add to the labeled data set. 
+    - You essentially set some threshold for the confidence level of a prediction, often 0.5 or higher, above which you believe the prediction and add it to the labeled data set. 
+    - You keep retraining the model until there are no more predictions that are confident.
+
 
 ## Multimodal Methods:
 - [x] LXMERT
