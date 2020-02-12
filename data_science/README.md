@@ -1,30 +1,41 @@
 ## Classification algorithms: 
-- Linear: Logistic Regression, Naive Bayes
-- Nearest Neighbour
-- SVM 
-- Decision Trees
-- Neural Networks
+- [x] Linear: Logistic Regression, Naive Bayes
+- [x] Nearest Neighbour
+- [x] SVM 
+- [x] Decision Trees
+- [x] Neural Networks
 
 ## Multimodal Methods:
-- LXMERT
-- Stacked cross attention for image - text matching
+- [x] LXMERT
+- [x] Stacked cross attention for image - text matching
 
 ## Video:
-- I3D, C3D
+- [x] I3D, C3D
 ## Text:
-- Transformer, Reformer, BERT, ELMo, .. 
+- [x] Transformer, Reformer, BERT, ELMo, .. 
 ## Tasks:
-- Q&A
-- Named Entity Recognition
-- Text Generation
+- [x] Q&A
+- [x] Named Entity Recognition
+- [x] Text Generation
 
 
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/data_science_cheat_sheet.png)
+---------------------------   attention    ---------------------
+
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/encoder-decoder-attention.png)
+---------------------------   transformer    ---------------------
+
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/transformer.png)
+---------------------------   BERT    ---------------------
+
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/bert.png)
+---------------------------   LXMERT    ---------------------
+
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/lxmert.png)
-![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/SCAi2t.png)
+----------   Stacked Cross Attention for IMage-Text matching    -------------------
+
+![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/SCAi2t.jpg)
+-------------  Identifying Visible Actions in Lifetyle Vlogs    -------------------
+
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/my_proj1.png)
 
 
