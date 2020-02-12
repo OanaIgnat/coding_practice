@@ -61,7 +61,7 @@ def stack_as_list():
 
 
 def main():
-    # stack_as_list()
+    stack_as_list()
     # stack_as_dequeue()
 
 
