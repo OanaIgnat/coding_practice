@@ -20,7 +20,7 @@
 - Text Generation
 
 
-<img src = "https://github.com/OanaIgnat/coding_practice/img/blob/master/data_science_cheat_sheet.png" width="700"/>
+![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/data_science_cheat_sheet.png)
 
 
 ## Data Structures
