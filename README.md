@@ -1,23 +1,23 @@
 ## Data Science
 ### Classification algorithms: 
-- Linear: Logistic Regression, Naive Bayes
-- Nearest Neighbour
-- SVM 
-- Decision Trees
-- Neural Networks
+- [x] Linear: Logistic Regression, Naive Bayes
+- [x] Nearest Neighbour
+- [x] SVM 
+- [x] Decision Trees
+- [x] Neural Networks
 
 ### Multimodal Methods:
-- LXMERT
-- Stacked cross attention for image - text matching
+- [x] LXMERT
+- [x] Stacked cross attention for image - text matching
 
 ### Video:
-- I3D, C3D
+- [x] I3D, C3D
 ### Text:
-- Transformer, Reformer, BERT, ELMo, .. 
+- [x] Transformer, Reformer, BERT, ELMo, .. 
 ### Tasks:
-- Q&A
-- Named Entity Recognition
-- Text Generation
+- [x] Q&A
+- [x] Named Entity Recognition
+- [x] Text Generation
 
 
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/data_science_cheat_sheet.png)
