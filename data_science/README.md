@@ -36,11 +36,11 @@
 ----------------------------------------------------------------------------------------------------------
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/lxmert.png)
 ----------------------------------------------------------------------------------------------------------
------------------------------Stacked Cross Attention for Image-Text matching    ------------------------
+-----------------------------Stacked Cross Attention for Image-Text matching    ----------------
 ----------------------------------------------------------------------------------------------------------
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/SCAi2t.jpg)
 ----------------------------------------------------------------------------------------------------------
------------------------------ Identifying Visible Actions in Lifestyle Vlogs    -----------------------
+----------------------------- Identifying Visible Actions in Lifestyle Vlogs    --------------
 ----------------------------------------------------------------------------------------------------------
 ![alt text](https://github.com/OanaIgnat/coding_practice/blob/master/img/my_proj1.png)
 
