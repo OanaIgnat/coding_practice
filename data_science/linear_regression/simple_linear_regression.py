@@ -68,8 +68,10 @@ def calculate_error(X, Y, b0, b1):
 def main():
     X, Y = read_data()
     b0, b1 = calculate_coefficients(X, Y)
+
     # Ordinary Least Square Method
     calculate_error(X, Y, b0, b1)
+
     # plot_results(X, Y, b0, b1)
 
 if __name__ == "__main__":
