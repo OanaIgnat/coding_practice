@@ -46,11 +46,13 @@ class Solution:
             target = B - A[i] #complement
             if target not in dic:
                 if A[i] not in dic:
-                    dic[A[i]] = i + 1
+                    dic[A[i]] = i
             else:
-                return [dic[target], i + 1]
+                return [dic[target], i]
 
         return []
+
+
 
 
 def test_twoSum():

@@ -23,6 +23,7 @@ def remove_duplicates(exp):
       else:
         new_s += ''
     print(new_s)
+
 def binary_representation(nb):
   z = bin(nb)
   z = str(z).split('b')[1]
