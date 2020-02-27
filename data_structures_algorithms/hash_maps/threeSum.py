@@ -5,8 +5,7 @@
 def findTriplets(arr, n):
     found = False
     for i in range(n - 1):
-        # Find all pairs with sum
-        # equals to "-arr[i]"
+        # Find all pairs with sum equals to "-arr[i]"
         s = set()
         for j in range(i + 1, n):
             x = -(arr[i] + arr[j])
