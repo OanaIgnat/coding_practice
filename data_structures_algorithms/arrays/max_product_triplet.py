@@ -21,11 +21,8 @@ def maxProduct(arr, n):
     # Sort the array in ascending order  
     arr.sort() 
   
-    # Return the maximum of product of last  
-    # three elements and product of first  
-    # two elements and last element  
-    return max(arr[0] * arr[1] * arr[n - 1],  
-               arr[n - 1] * arr[n - 2] * arr[n - 3])  
+    # Return the maximum of product of last three elements and product of first two elements and last element
+    return max(arr[0] * arr[1] * arr[n - 1],  arr[n - 1] * arr[n - 2] * arr[n - 3])
   
 # Driver Code 
 if __name__ == "__main__": 

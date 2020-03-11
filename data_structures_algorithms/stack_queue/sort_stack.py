@@ -26,8 +26,7 @@ def sortStack(s):
 # Printing contents of stack
 def printStack(s):
     for i in s[::-1]:
-            print(i , end=" ")
-    print()
+        print(i , end=" ")
 
 def main():
     s = []

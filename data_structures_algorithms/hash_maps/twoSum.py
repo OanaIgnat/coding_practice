@@ -43,7 +43,7 @@ class Solution:
     def twoSum(self, A, B):
         dic = {}
         for i in range(len(A)):
-            target = B - A[i] #complement
+            target = B - A[i] # complement
             if target not in dic:
                 if A[i] not in dic:
                     dic[A[i]] = i
