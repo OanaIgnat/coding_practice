@@ -3,10 +3,13 @@ from functools import reduce
 
 def map_filter_reduce():
     items = [1, 2, 3, 4]
+
     squared = list(map(lambda x: x ** 2, items))
     [x ** 2 for x in items]
+
     less_than_2 = list(filter(lambda x: x < 2, items))
     [x for x in items if x < 2]
+
     product = reduce((lambda x, y: x * y), items)
     sum(x for x in items)
 
