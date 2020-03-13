@@ -9,15 +9,15 @@ Worst:O(n)
 """
 
 
-def mergesort(array_to_sort):
+def merge_sort(array_to_sort):
     if len(array_to_sort) < 2:
         return array_to_sort
 
     result = []
     mid = int(len(array_to_sort) / 2)
 
-    left = mergesort(array_to_sort[:mid])
-    right = mergesort(array_to_sort[mid:])
+    left = merge_sort(array_to_sort[:mid])
+    right = merge_sort(array_to_sort[mid:])
     i = 0
     j = 0
 
@@ -37,4 +37,4 @@ def mergesort(array_to_sort):
 
 if __name__ == "__main__":
     array = [12, 4, 5, 6, 6, 7, 3, 1, 10]
-    print(mergesort(array))
+    print(merge_sort(array))

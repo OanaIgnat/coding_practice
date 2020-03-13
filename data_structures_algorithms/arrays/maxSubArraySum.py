@@ -10,18 +10,17 @@ def all_pairs_sum(arr):
 
 
 # Largest Sum Contiguous Subarray
-def maxSubArraySum(arr):
-  max_sum = 0
-  max_so_far = 0
+def maxSubArraySum(nums):
+  max_sum = nums[0]
 
-  for el in arr:
-    max_sum += el
-    if max_sum > 0:
-      if max_so_far < max_sum:
-        max_so_far = max_sum
-    else:
-      max_sum = 0
-  return max_so_far
+  for i in range(1, len(nums)):
+    if nums[i - 1] > 0:
+      nums[i] += nums[i - 1]
+    max_sum = max(nums[i], max_sum)
+  return max_sum
+
+
+
 
 
 if __name__ == "__main__":

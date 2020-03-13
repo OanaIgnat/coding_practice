@@ -5,24 +5,20 @@ class Node:
         self.right = None
         self.val = key
 
+
 '''
 Recursively compute max height of left & right subtrees
 Get the maximum between them
 Add 1 for the current node
 '''
-
-def max_height(root):
-
+def height(root):
     if root is None:
         return 0
+    else:
+        h_left = height(root.left)
+        h_right = height(root.right)
+        return max(h_left, h_right) + 1  # +1 for current node
 
-    m_left = max_height(root.left)
-
-    m_right = max_height(root.right)
-
-    max_left_right = max(m_left, m_right) + 1 # +1 for current node
-
-    return max_left_right
 
 '''
     1
@@ -38,7 +34,7 @@ def main():
     root.left.left = Node(4)
     root.left.right = Node(5)
 
-    print(max_height(root))
+    print(height(root))
 
 if __name__ == "__main__":
     main()
