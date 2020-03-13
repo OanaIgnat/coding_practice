@@ -14,7 +14,7 @@ def merge_sort(array_to_sort):
         return array_to_sort
 
     result = []
-    mid = int(len(array_to_sort) / 2)
+    mid = len(array_to_sort) // 2
 
     left = merge_sort(array_to_sort[:mid])
     right = merge_sort(array_to_sort[mid:])

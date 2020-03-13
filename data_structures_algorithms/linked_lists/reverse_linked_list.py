@@ -4,6 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
 
     def reverseList(self, head):  # Iterative
@@ -20,3 +21,12 @@ class Solution:
         head.next.next = head  # 3-> 4 becomes 4 ->3
         head.next = None  # remove previous link 3-> 4
         return p
+
+
+def test_addTwoNumbers():
+    s = Solution()
+    s.merge_sorted_lists(l1=[1, 2, 4], l2=[1, 3, 4])
+
+
+if __name__ == "__main__":
+    test_addTwoNumbers()

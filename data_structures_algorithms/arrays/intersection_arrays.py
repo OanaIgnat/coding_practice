@@ -1,25 +1,43 @@
+from typing import List, Set
+
+
 class Solution:
-    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        d1 = {}
-        for n in nums1:
-            if n not in d1.keys():
-                d1[n] = 0
-            d1[n] += 1
+    def set_intersection(self, set1, set2):
+        # To solve the problem in linear time, let's use the structure set,
+        # which provides in/contains operation in O(1) time in average case.
+        return [x for x in set1 if x in set2]
 
-        d2 = {}
-        for n in nums2:
-            if n not in d2.keys():
-                d2[n] = 0
-            d2[n] += 1
+    # Time complexity : O(n+m), where n and m are arrays' lengths.
+    # O(n) time is used to convert nums1 into set, O(m) time is used to convert nums2,
+    # and contains/in operations are O(1) in the average case.
 
-        output = []
-        for k1 in d1.keys():
-            for k2 in d2.keys():
-                if k1 == k2:
-                    if d1[k1] >= d2[k2]:
-                        for i in range(d2[k2]):
-                            output.append(k1)
-                    else:
-                        for i in range(d1[k1]):
-                            output.append(k1)
-        return output
+    # Space complexity : O(m+n) in the worst case when all elements in the arrays are different.
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+
+        nums1 = set(nums1)
+        nums2 = set(nums2)
+
+        if len(nums1) < len(nums2):
+            return self.set_intersection(nums1, nums2)
+        else:
+            return self.set_intersection(nums2, nums1)
+
+    # what if arrays are sorted?
+    # O(n) time complexity & O(1) space (the output is not considered)
+    def intersection_sorted(self, nums1: List[int], nums2: List[int]) -> List[int]:
+
+        nums1.sort()
+        nums2.sort()
+
+        result = set()
+        i, j = 0, 0
+        while i < len(nums1) and j < len(nums2):
+            if nums1[i] == nums2[j]:
+                result.add(nums1[i])
+                i += 1
+                j += 1
+            elif nums1[i] < nums2[j]:
+                i += 1
+            else:
+                j += 1
+        return result

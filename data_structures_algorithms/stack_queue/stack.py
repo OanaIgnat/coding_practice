@@ -22,14 +22,14 @@ def push(stack, item):
       
 # Function to remove an item from stack. It decreases size by 1 
 def pop(stack): 
-    if (isEmpty(stack)): 
+    if isEmpty(stack):
         return str(-maxsize -1) # return minus infinite 
       
     return stack.pop() 
   
 # Function to return the top from stack without removing it 
 def peek(stack): 
-    if (isEmpty(stack)): 
+    if isEmpty(stack):
         return str(-maxsize -1) # return minus infinite 
     return stack[len(stack) - 1] 
   
