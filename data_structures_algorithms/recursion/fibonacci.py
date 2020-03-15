@@ -36,5 +36,8 @@ def main() -> None:
         print(i, fib4(i))
 
 
+
+
+
 if __name__ == '__main__':
     main()

@@ -34,11 +34,11 @@ def main():
     root.right = Node(3)
     root.left.left = Node(4)
     root.left.right = Node(5)
-    print("Inorder traversal:")
+    print("Inorder traversal: 4, 2, 5, 1, 3")
     printInorder(root)
-    print("Preorder traversal:")
+    print("Preorder traversal: 1, 2, 4, 5, 3")
     printPreorder(root)
-    print("Postorder traversal:")
+    print("Postorder traversal: 2, 4, 5, 3, 1")
     printPostorder(root)
 
 if __name__ == "__main__":
