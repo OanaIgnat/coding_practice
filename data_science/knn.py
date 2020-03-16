@@ -11,7 +11,7 @@ def mean(labels):
 
 def mode(labels):
     dict_nb = Counter(labels)
-    return (dict_nb.most_common(1)[0][0])
+    return dict_nb.most_common(1)[0][0]
 
 
 def euclidean_distance(point1, point2):

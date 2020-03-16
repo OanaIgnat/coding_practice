@@ -7,6 +7,7 @@ plt.rcParams['figure.figsize'] = (12.0, 9.0)
 If results are not okay (nan or inf -> check learning rate
 '''
 
+
 def compute_linear_regression(reg_data, reg_query, typeGD):
     '''
     y_pred = a x + b
@@ -22,10 +23,10 @@ def compute_linear_regression(reg_data, reg_query, typeGD):
     a, b = 0, 0
     # batch GD
     if typeGD == "Batch":
-        for epoch in range(1000): # calculate cost and update weights
+        for epoch in range(1000):  # calculate cost and update weights
             Y_pred = a * X + b
 
-            deriv_a = (-2 / n) * sum(X * (Y - Y_pred)) # deriv_a = (-2 / n) * np.dot(X, (Y - Y_pred)) # or deriv_a = (-2 / n) * np.matmul(X.T, (Y - Y_pred))
+            deriv_a = (-2 / n) * sum(X * (Y - Y_pred))  # deriv_a = (-2 / n) * np.dot(X, (Y - Y_pred)) # or deriv_a = (-2 / n) * np.matmul(X.T, (Y - Y_pred))
             deriv_b = (-2 / n) * sum(Y - Y_pred)
 
             a = a - l_r * deriv_a
@@ -40,7 +41,7 @@ def compute_linear_regression(reg_data, reg_query, typeGD):
             # todo shuffle X
             for i in range(n):  # update weights
                 Y_pred = a * X[i] + b
-                for j in range(n): # calculate cost
+                for j in range(n):  # calculate cost
                     deriv_a = -2 * X[j] * (Y[j] - Y_pred)
                     deriv_b = -2 * (Y[j] - Y_pred)
 
