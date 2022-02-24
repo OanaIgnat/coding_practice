@@ -12,8 +12,13 @@ def compute_linear_regression(X, y, reg_query, typeGD):
     n = len(X)
     l_r = 1e-5
     w, b = 0, 0
-    # batch GD
-    if typeGD == "Batch":
+    '''
+        The weights/params get updated:
+        Only after all training data has been evaluated/ 1 epoch
+        Pros:
+        Cons: 
+    '''
+    if typeGD == "Batch": # Vanilla
         for epoch in range(1000):  # calculate cost and update weights
             y_pred = w * X + b
             
@@ -24,6 +29,9 @@ def compute_linear_regression(X, y, reg_query, typeGD):
             w -= l_r * dw
             b -= l_r * db
 
+    # The weights/params get updated for each data point
+    # Pros:
+    # Cons:
     elif typeGD == "SGD":
         for epoch in range(1000):
             w_cost, b_cost = 0, 0
@@ -41,6 +49,8 @@ def compute_linear_regression(X, y, reg_query, typeGD):
                 w -= l_r * w_cost
                 b -= l_r * w_cost
 
+    # splits the training data points into small batches and performs an update for each batch
+    # Pros: Balances the robustness of SGD with the efficiency of Batch GD
     elif typeGD == "MiniBatch":
         batch_size = 32
         for epoch in range(1000):
