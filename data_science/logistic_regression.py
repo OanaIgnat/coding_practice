@@ -1,64 +1,68 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from ipython_genutils.py3compat import xrange
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
 
+'''
+If results are not okay (nan or inf -> check learning rate
 
-def create_data():
-    np.random.seed(12)
-    num_observations = 5000
-
-    x1 = np.random.multivariate_normal([0, 0], [[1, .75], [.75, 1]], num_observations)
-    x2 = np.random.multivariate_normal([1, 4], [[1, .75], [.75, 1]], num_observations)
-
-    X = np.vstack((x1, x2)).astype(np.float32)
-    Y = np.hstack((np.zeros(num_observations),
-                   np.ones(num_observations)))
-    return X, Y
-
+y_pred = w x + b
+Loss function: Log Loss -y * log(y_pred) - (1-y) * log(1 - y_pred)
+Cost function: 1/n sum(-y * log(y_pred) - (1-y) * log(1 - y_pred))
+'''
 
 def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
+    return 1.0 / (1 + np.exp(-x))
 
+def loss(y, y_pred):
+    loss = -np.mean(y * (np.log(y_pred)) - (1-y) * np.log(1-y_pred))
+    return loss
 
-def log_likelihood(x, y, w):
-    scores = np.dot(x, w)
-    ll = np.sum(y * scores - np.log(1 + np.exp(scores)))
-    return ll
+def compute_logistic_regression(X, y):
+    n, nb_features = X.shape[0], X.shape[1]
+    l_r = 1e-5
+    w, b = np.zeros((nb_features, 1)), 0
 
+    y = y.reshape(n, 1)
+    for epoch in range(1000):
+        y_pred = sigmoid(np.dot(X, w) + b)
 
-def logistic_regression(x, y, num_steps, learning_rate):
-    intercept = np.ones((x.shape[0], 1))
-    x = np.hstack((intercept, x))
+        # dw = 1/n * np.dot(X, (y - y_pred))
+        dw = 1/n * np.dot(X.T, (y_pred - y))
+        db = 1/n * sum(y_pred - y)
 
-    w = np.zeros(x.shape[1])
+        # update the weights & biases
+        w -= l_r * dw
+        b -= l_r * db
 
-    for step in xrange(num_steps):
-        scores = np.dot(x, w)
-        predictions = sigmoid(scores)
+    return w, b
 
-        # Update weights with gradient
-        error = y - predictions
-        gradient = np.dot(x.T, error)
-        w += learning_rate * gradient
+def predict(X, w, b):
+    predictions = sigmoid(np.dot(X, w) + b)
+    threshold = 0.5
+    return np.array([1 if pred > threshold else 0 for pred in predictions])
 
-        # Print log-likelihood every so often
-        if step % 10000 == 0:
-            print(log_likelihood(x, y, w))
-    return w
-
-
-def compute_final_score(x, w, y):
-    final_scores = np.dot(x, w)
-    preds = np.round(sigmoid(final_scores))
-    print('Accuracy from scratch: {0}'.format((preds == y).sum().astype(float) / len(preds)))
-
+def accuracy(y_true, y_pred):
+    return np.sum(y_true == y_pred) / len(y_true)
 
 def main():
-    x, y = create_data()
-    num_steps, learning_rate = 300000, 5e-5
-    w = logistic_regression(x, y, num_steps, learning_rate)
-    compute_final_score(x, w, y)
+    '''
+           Create data
+    '''
+    X, y = datasets.make_blobs(
+        n_samples=20, n_features=2, centers=2, cluster_std=1.05, random_state=1
+    )
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=1)
+
+    '''
+        Test Logistic Regression
+    '''
+    w, b = compute_logistic_regression(X_train, y_train)
+    y_pred = predict(X_test, w, b)
+    print(accuracy(y_test, y_pred))
 
 
-if __name__ == "__main__":
+
+
+if __name__ == '__main__':
     main()
+

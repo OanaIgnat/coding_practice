@@ -1,58 +1,45 @@
 import numpy as np
-import matplotlib.pyplot as plt
-
-plt.rcParams['figure.figsize'] = (12.0, 9.0)
 
 '''
 If results are not okay (nan or inf -> check learning rate
+
+y_pred = w x + b
+Square Loss function: (y - y_pred) ^ 2
+Cost function: 1/n sum((y - y_pred) ^ 2)
 '''
 
-
-def compute_linear_regression(reg_data, reg_query, typeGD):
-    '''
-    y_pred = a x + b
-    cost function: 1/n (sum[(y - y_pred) ^ 2]) - MSE
-    '''
-    reg_data = np.array(reg_data)
-    X = np.array(reg_data[:, 0])
-    Y = np.array(reg_data[:, 1])
-    # plt.scatter(X, Y)
-    # plt.show()
+def compute_linear_regression(X, y, reg_query, typeGD):
     n = len(X)
-    l_r = 0.00001
-    a, b = 0, 0
+    l_r = 1e-5
+    w, b = 0, 0
     # batch GD
     if typeGD == "Batch":
         for epoch in range(1000):  # calculate cost and update weights
-            Y_pred = a * X + b
+            y_pred = w * X + b
+            
+            dw = (-2 / n) * np.dot(X, (y - y_pred))  # or (-2 / n) * np.matmul(X.T, (y - y_pred)) or (-2 / n) * sum(X * (y - y_pred))
+            db = (-2 / n) * sum(y - y_pred)
 
-            deriv_a = (-2 / n) * sum(X * (Y - Y_pred))  # deriv_a = (-2 / n) * np.dot(X, (Y - Y_pred)) # or deriv_a = (-2 / n) * np.matmul(X.T, (Y - Y_pred))
-            deriv_b = (-2 / n) * sum(Y - Y_pred)
+            # update the weights & biases
+            w -= l_r * dw
+            b -= l_r * db
 
-            a = a - l_r * deriv_a
-            b = b - l_r * deriv_b
-            # MSE = 1 / n * sum((Y - Y_pred) ** 2) # error/ loss function
-            # if epoch % 100:
-            #     print(MSE)
     elif typeGD == "SGD":
-        # SGD
         for epoch in range(1000):
-            a_cost, b_cost = 0, 0
+            w_cost, b_cost = 0, 0
             # todo shuffle X
             for i in range(n):  # update weights
-                Y_pred = a * X[i] + b
+                y_pred = w * X[i] + b
                 for j in range(n):  # calculate cost
-                    deriv_a = -2 * X[j] * (Y[j] - Y_pred)
-                    deriv_b = -2 * (Y[j] - Y_pred)
+                    dw = -2 * X[j] * (y[j] - y_pred)
+                    db = -2 * (y[j] - y_pred)
 
-                    a_cost += deriv_a
-                    b_cost += deriv_b
+                    w_cost += dw
+                    b_cost += db
 
-                a = a - l_r * a_cost
-                b = b - l_r * b_cost
-            # MSE = sum((Y - Y_pred) ** 2)  # error/ loss function
-            # if epoch % 100:
-            #     print(MSE)
+                # update the weights
+                w -= l_r * w_cost
+                b -= l_r * w_cost
 
     elif typeGD == "MiniBatch":
         batch_size = 32
@@ -60,19 +47,17 @@ def compute_linear_regression(reg_data, reg_query, typeGD):
             # todo shuffle X
             for i in range(0, n, batch_size):  # calculate cost & update weights
                 X = X[i:i + batch_size]
-                Y = Y[i:i + batch_size]
-                Y_pred = a * X + b
+                y = y[i:i + batch_size]
+                y_pred = w * X + b
 
-                deriv_a = (-2 / n) * sum(X * (Y - Y_pred))
-                deriv_b = (-2 / n) * sum(Y - Y_pred)
+                dw = (-2 / n) * np.dot(X, (y - y_pred))
+                db = (-2 / n) * sum(y - y_pred)
 
-                a = a - l_r * deriv_a
-                b = b - l_r * deriv_b
-                # MSE = sum((Y - Y_pred) ** 2)  # error/ loss function
-                # if epoch % 100:
-                #     print(MSE)
+                w -= l_r * dw
+                b -= l_r * db
 
-    reg_prediction = a * np.array([reg_query]) + b
+
+    reg_prediction = w * np.array([reg_query]) + b
     return reg_prediction[0]
 
 
@@ -96,13 +81,17 @@ def main():
         [66.49, 127.45],
     ]
 
+    reg_data = np.array(reg_data)
+    X = np.array(reg_data[:, 0])
+    y = np.array(reg_data[:, 1])
+
     # Question:
     # Given the data we have, what's the best-guess at someone's weight if they are 60 inches tall?
     reg_query = 60
     type_GD = ["Batch", "MiniBatch", "SGD"]
     for type in type_GD:
         print("For " + type + " :")
-        reg_prediction = compute_linear_regression(reg_data, reg_query, type)
+        reg_prediction = compute_linear_regression(X, y, reg_query, type)
         print("if they are %d inches tall, their weigth is probably %.3f" % (reg_query, reg_prediction))
 
 

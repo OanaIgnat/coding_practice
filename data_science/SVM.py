@@ -26,16 +26,13 @@ class SVM:
 
     def get_cls_map(self, y):
         # if y=0 then map to -1 else map to 1
-        return np.where(y <= 0, -1, 1) #  turns every class label of 0 into -1
+        return np.where(y <= 0, -1, 1) # turns every class label of 0 into -1
 
-    def satisfy_constraint(self, x, idx):
-        y = self.class_map[idx]
-        return y * (np.dot(x, self.w) + self.b) >= 1
 
-    def get_gradient(self, constraint, x, idx):
+    def get_gradient(self, x, idx):
         y = self.class_map[idx]
-        # if data point lies on the correct side
-        if constraint:
+        # if data point lies on the correct side/ satisfies the constraint
+        if y * (np.dot(x, self.w) + self.b) >= 1:
             dw = self.lambda_hyperparam * self.w
             db = 0
         else:
@@ -60,10 +57,8 @@ class SVM:
         '''
         for _ in range(self.n_iter):
             for idx, x in enumerate(X):
-                # check if data point satisfies the constraint
-                constraint = self.satisfy_constraint(x, idx)
-                # compute the gradients accordingly
-                dw, db = self.get_gradient(constraint, x, idx)
+                # compute the gradients
+                dw, db = self.get_gradient(x, idx)
                 # update the weights & biases
                 self.update_params(dw, db)
 
