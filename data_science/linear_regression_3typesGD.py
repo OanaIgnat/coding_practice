@@ -12,12 +12,8 @@ def compute_linear_regression(X, y, reg_query, typeGD):
     n = len(X)
     l_r = 1e-5
     w, b = 0, 0
-    '''
-        The weights/params get updated:
-        Only after all training data has been evaluated/ 1 epoch
-        Pros:
-        Cons: 
-    '''
+
+    # The weights/params get updated after all training data has been evaluated/ 1 epoch
     if typeGD == "Batch": # Vanilla
         for epoch in range(1000):  # calculate cost and update weights
             y_pred = w * X + b
@@ -30,8 +26,6 @@ def compute_linear_regression(X, y, reg_query, typeGD):
             b -= l_r * db
 
     # The weights/params get updated for each data point
-    # Pros:
-    # Cons:
     elif typeGD == "SGD":
         for epoch in range(1000):
             w_cost, b_cost = 0, 0

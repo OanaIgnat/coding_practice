@@ -28,7 +28,6 @@ class SVM:
         # if y=0 then map to -1 else map to 1
         return np.where(y <= 0, -1, 1) # turns every class label of 0 into -1
 
-
     def get_gradient(self, x, idx):
         y = self.class_map[idx]
         # if data point lies on the correct side/ satisfies the constraint

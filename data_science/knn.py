@@ -1,17 +1,18 @@
 import math
 from collections import Counter
-
+'''
+Given a query point X, calculate all distances (Euclidian) from X to all points and
+select the top K nearest points to X. 
+If regression, return mean of the labels of those K points.
+If classification, return mean of the labels of those K points
+'''
 
 def mean(labels):
-    sum = 0
-    for i in labels:
-        sum += i
-    return sum / len(labels)
+    return sum(labels) / len(labels)
 
-
+# the value that appears most often
 def mode(labels):
-    dict_nb = Counter(labels)
-    return dict_nb.most_common(1)[0][0]
+    return Counter(labels).most_common(1)[0][0] # if 2 or more values appear, get the first
 
 
 def euclidean_distance(point1, point2):
@@ -24,27 +25,25 @@ def euclidean_distance(point1, point2):
 def knn(data, query, k, distance_fn, choice_fn):
     neighbor_distances_and_indices = []
 
-    # 3. For each example in the data
     for index, example in enumerate(data):
-        # 3.1 Calculate the distance between the query example and the current
-        # example from the data.
+        # calculate the distance between the query example and the current example from the data
         distance = distance_fn(example[:-1], query)
 
-        # 3.2 Add the distance and the index of the example to an ordered collection
+        # add the distance and the index of the example to an ordered collection
         neighbor_distances_and_indices.append((distance, index))
 
-    # 4. Sort the ordered collection of distances and indices from
-    # smallest to largest (in ascending order) by the distances
-    sorted_neighbor_distances_and_indices = sorted(neighbor_distances_and_indices)
+    # sort the  distances and indices from in ascending order by the distances
+    # neighbor_distances_and_indices = sorted(neighbor_distances_and_indices)
+    neighbor_distances_and_indices.sort(key=lambda x: x[0])
 
-    # 5. Pick the first K entries from the sorted collection
-    k_nearest_distances_and_indices = sorted_neighbor_distances_and_indices[:k]
+    # pick the first K entries from the sorted collection
+    k_nearest_distances_and_indices = neighbor_distances_and_indices[:k]
 
-    # 6. Get the labels of the selected K entries
-    k_nearest_labels = [data[i][1] for distance, i in k_nearest_distances_and_indices]
+    # get the labels of the selected K entries
+    k_nearest_labels = [data[idx][1] for distance, idx in k_nearest_distances_and_indices]
 
-    # 7. If regression (choice_fn = mean), return the average of the K labels
-    # 8. If classification (choice_fn = mode), return the mode of the K labels
+    # if regression (choice_fn = mean), return the average of the K labels
+    # if classification (choice_fn = mode), return the mode of the K labels
     return choice_fn(k_nearest_labels)
 
 
@@ -73,7 +72,8 @@ def main():
     reg_query = [60]
     reg_prediction = knn(
         reg_data, reg_query, k=3, distance_fn=euclidean_distance, choice_fn=mean)
-    print("if they are 60 inches tall, their weigth is probably " + str(reg_prediction))
+    print("If they are 60 inches tall, their weight is probably " + str(reg_prediction))
+
     '''   
     # Classification Data
     # 
